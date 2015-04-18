@@ -1,0 +1,11 @@
+{
+  "name": "site-extension",
+  "description": "Wix Accordion Menu",
+  "private": true,
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "wixLongDescription": "A vertical accordion menu"
+}
+
