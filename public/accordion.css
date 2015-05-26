@@ -5,19 +5,19 @@ body {
 }
 
 /* ================ Main Menu Styles ============== */
-		
+
 /* The accordion div element properties */
 .accordion {
 	background: white;
 	width: 200;
 }
- 		
+
 .main-menu {
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
 }
-		
+
 .main-menu-item {
 	cursor: pointer;
 	margin: 0;
@@ -29,47 +29,47 @@ body {
 	line-height: 34px;
 	color: white;
 	display: block;
-	background: black; 
+	background: black;
 	border-bottom: 1px solid white;
 }
-		
+
 .main-menu-item.active,
 .main-menu-item:hover {
 	background: #363636;
 }
-				
-		
+
+
 /* =================== Main Menu Styles End ============= */
-		
+
 /* ================== Sub Menu Styles ==================== */
-		
+
 .sub-menu {
 	/* Usefull latter when we animate the sub item. */
 	background: black;
 	padding: 0;
 	/* To account for the 10px added to as padding to the main menu item */
-	margin-left: -10px;	
+	margin-left: -10px;
 	list-style-type: none;
 }
-		
+
 .sub-menu-item {
 	border-color: #ebebeb;
 	border-style: solid;
-	border-width: 0px 1px 1px 1px;
+	border-width: 0 1px 1px 1px;
 	background: white;
 	color: black;
 	text-decoration: none;
 	line-height: 33px;
 	font-size: 12px;
 	font-weight: 500;
-	padding: 0px 15px;
+	padding: 0 15px;
 	/*transition for smooth hover animatio*/
 	transition: margin 0.15s;
 }
-			
+
 .sub-menu-item.active,
 .sub-menu-item:hover {
-	border-left: 0px;
+	border-left: 0;
 	margin-left: 5px;
 }
 /* =================== Sub Menu Styles End ============= */

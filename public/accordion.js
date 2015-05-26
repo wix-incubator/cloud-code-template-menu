@@ -1,14 +1,19 @@
+import {site} from 'wix-sdk';
+import {navigate} from 'wix-sdk';
+import {geometry} from 'wix-sdk';
+
 $(document).ready(function () {
 	var templateSource = $("#accordion-template").html();
 	var template = Handlebars.compile(templateSource);
-	
+
 	/* =============== Menu Building ========= */
-	Wix.getSitePages(function renderMenu(sitePages) {
-		buildMenu(sitePages);
-		attachListeners();
-		setCurrentPage();
-	});
-	
+	site.pages.list()
+	.then(buildMenu)
+	.then(attachListeners)
+	.then(setCurrentPage)
+	.then(updateAccordionHeight)
+	.then(slideUpSubMenus);
+
 	// Function that builds the menu given the site pages
 	function buildMenu(sitePages) {
 		//Add elements to menu
@@ -16,7 +21,7 @@ $(document).ready(function () {
 	}
 
 	/* ============== Menu Building End  ============= */
-	
+
 	/* ============== Accordion Efects =============== */
 	function attachListeners() {
 		$(".main-menu-item").mouseover(slideDownSubmenu);
@@ -40,6 +45,7 @@ $(document).ready(function () {
 		//make sure the active one is open
 		$(".sub-menu.active").slideDown();
 	}
+
 	//Override the accordion links default behaviour.
 	function menuItemClicked(event) {
 		//We dont want the mainMenuItem to catch the same event.
@@ -48,7 +54,7 @@ $(document).ready(function () {
 		$(".active").removeClass("active");
 		var itemClicked = $(this);
 		setActiveMenuItem(itemClicked);
-		Wix.navigateToPage(itemClicked.attr('id'));
+		navigate.toPage(itemClicked.attr('id'));
 	}
 
 	function setActiveMenuItem(item) {
@@ -59,14 +65,12 @@ $(document).ready(function () {
 	}
 
 	function setCurrentPage() {
-		Wix.getCurrentPageId(function (pageId) {
+		return site.pages.getId().then(function (pageId) {
 			setActiveMenuItem($("#" + pageId));
-			slideUpSubMenus();
-			updateAccordionHeight();
 		});
 	}
 
 	function updateAccordionHeight() {
-		Wix.setHeight($('.accordion').height() + 10);
+		return geometry.setHeight($('.accordion').height() + 10);
 	}
 });
