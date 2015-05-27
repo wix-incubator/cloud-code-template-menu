@@ -1,6 +1,4 @@
-import {site} from 'wix-sdk';
-import {navigate} from 'wix-sdk';
-import {geometry} from 'wix-sdk';
+import {site, navigate, geometry} from 'wix-sdk';
 
 $(document).ready(function () {
 	var templateSource = $("#accordion-template").html();
