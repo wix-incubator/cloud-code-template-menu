@@ -1,6 +1,6 @@
 import {site, navigate, geometry} from 'wix-sdk';
 
-$(document).ready(function () {
+$(function onDocumentReady() {
 	'use strict';
 
 	var templateSource = $('#accordion-template').html();
@@ -34,6 +34,7 @@ $(document).ready(function () {
 		if (!$(this).find('.sub-menu').is(':visible')) {
 			//slide up all the link lists
 			$('.sub-menu').slideUp();
+
 			//now slide down the one closest to this.
 			$(this).find('.sub-menu').slideDown();
 		}
@@ -42,6 +43,7 @@ $(document).ready(function () {
 	function slideUpSubMenus() {
 		// slide up all the link lists
 		$('.sub-menu:not(.active)').slideUp();
+
 		// make sure the active one is open
 		$('.sub-menu.active').slideDown();
 	}
@@ -50,16 +52,19 @@ $(document).ready(function () {
 	function menuItemClicked(event) {
 		// Stops the main menu item from catching the same event
 		event.stopPropagation();
+
 		// Remove the current active one
 		$('.active').removeClass('active');
 		var itemClicked = $(this);
 		setActiveMenuItem(itemClicked);
+
 		navigate.toPage(itemClicked.attr('id'));
 	}
 
 	function setActiveMenuItem(item) {
 		//Make the current item active.
 		item.addClass('active');
+
 		//Select closest submenu and mark it also as active.
 		item.closest('.sub-menu').addClass('active');
 	}

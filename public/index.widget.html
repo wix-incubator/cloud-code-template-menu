@@ -16,11 +16,11 @@
     <script id="accordion-template" type="text/x-handlebars-template">
         <ul class="main-menu">
         {{#pages}}
-            <li class="main-menu-item" id="{{id}}">{{title}}
+            <li class="main-menu-item" id="{{id}}"><span class="item-text">{{title}}</span>
             {{#if childPages}}
             <ul class="sub-menu">
                 {{#childPages}}
-                    <li class="sub-menu-item" id="{{id}}">{{title}}<li>
+                    <li class="sub-menu-item" id="{{id}}"><span>{{title}}</span><li>
                 {{/childPages}}
             </ul>
             {{/if}}
