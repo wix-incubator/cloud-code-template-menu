@@ -22,7 +22,7 @@ body {
 	cursor: pointer;
 	margin: 0;
 	padding-left: 10px;
-	/* We dont want the links to be underlined so we change decoretion to none*/
+	/* text-decoration is set to none so the links won't be underlined */
 	text-decoration: none;
 	font-weight: normal;
 	font-size: 12px;
@@ -44,7 +44,7 @@ body {
 /* ================== Sub Menu Styles ==================== */
 
 .sub-menu {
-	/* Usefull latter when we animate the sub item. */
+	/* Useful later when we animate the sub menu item */
 	background: black;
 	padding: 0;
 	/* To account for the 10px added to as padding to the main menu item */
@@ -63,7 +63,7 @@ body {
 	font-size: 12px;
 	font-weight: 500;
 	padding: 0 15px;
-	/*transition for smooth hover animatio*/
+	/* Add a transition for a smooth hover animation */
 	transition: margin 0.15s;
 }
 

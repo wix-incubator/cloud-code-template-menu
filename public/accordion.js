@@ -1,7 +1,9 @@
 import {site, navigate, geometry} from 'wix-sdk';
 
 $(document).ready(function () {
-	var templateSource = $("#accordion-template").html();
+	'use strict';
+
+	var templateSource = $('#accordion-template').html();
 	var template = Handlebars.compile(templateSource);
 
 	/* =============== Menu Building ========= */
@@ -20,36 +22,36 @@ $(document).ready(function () {
 
 	/* ============== Menu Building End  ============= */
 
-	/* ============== Accordion Efects =============== */
+	/* ============== Accordion Effects =============== */
 	function attachListeners() {
-		$(".main-menu-item").mouseover(slideDownSubmenu);
-		$(".accordion").mouseleave(slideUpSubMenus);
-		$(".main-menu-item, .sub-menu-item").click(menuItemClicked);
+		$('.main-menu-item').mouseover(slideDownSubmenu);
+		$('.accordion').mouseleave(slideUpSubMenus);
+		$('.main-menu-item, .sub-menu-item').click(menuItemClicked);
 	}
 
 	function slideDownSubmenu() {
-		//slide down the sub menu below the main menu item (only if its closed)
-		if (!$(this).find('.sub-menu').is(":visible")) {
+		// slide the sub menu item below the main menu item (only if it's closed)
+		if (!$(this).find('.sub-menu').is(':visible')) {
 			//slide up all the link lists
-			$(".sub-menu").slideUp();
+			$('.sub-menu').slideUp();
 			//now slide down the one closest to this.
 			$(this).find('.sub-menu').slideDown();
 		}
 	}
 
 	function slideUpSubMenus() {
-		//slide up all the link lists
-		$(".sub-menu:not(.active)").slideUp();
-		//make sure the active one is open
-		$(".sub-menu.active").slideDown();
+		// slide up all the link lists
+		$('.sub-menu:not(.active)').slideUp();
+		// make sure the active one is open
+		$('.sub-menu.active').slideDown();
 	}
 
-	//Override the accordion links default behaviour.
+	// Override the accordion links' default behavior
 	function menuItemClicked(event) {
-		//We dont want the mainMenuItem to catch the same event.
+		// Stops the main menu item from catching the same event
 		event.stopPropagation();
-		//Remove the current active one
-		$(".active").removeClass("active");
+		// Remove the current active one
+		$('.active').removeClass('active');
 		var itemClicked = $(this);
 		setActiveMenuItem(itemClicked);
 		navigate.toPage(itemClicked.attr('id'));
@@ -57,14 +59,14 @@ $(document).ready(function () {
 
 	function setActiveMenuItem(item) {
 		//Make the current item active.
-		item.addClass("active");
+		item.addClass('active');
 		//Select closest submenu and mark it also as active.
-		item.closest(".sub-menu").addClass("active");
+		item.closest('.sub-menu').addClass('active');
 	}
 
 	function setCurrentPage() {
 		return site.pages.getId().then(function (pageId) {
-			setActiveMenuItem($("#" + pageId));
+			setActiveMenuItem($('#' + pageId));
 		});
 	}
 
