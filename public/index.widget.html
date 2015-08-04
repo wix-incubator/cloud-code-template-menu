@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
-        <script src="accordion.js"></script>
-
-        <link rel="stylesheet" type="text/css" href="accordion.css">
-
-        <title>Accordion Menu</title>
-    </head>
-    <body>
-        <nav class="accordion"></nav>
-    </body>
-
-    <script id="accordion-template" type="text/x-handlebars-template">
-        <ul class="main-menu">
-        {{#pages}}
-            <li class="main-menu-item" id="{{id}}"><span class="item-text">{{title}}</span>
-            {{#if childPages}}
-            <ul class="sub-menu">
-                {{#childPages}}
-                    <li class="sub-menu-item" id="{{id}}"><span>{{title}}</span><li>
-                {{/childPages}}
-            </ul>
-            {{/if}}
-        {{/pages}}
-        </li>
-      </ul>
-    </script>
+  <head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+    <script src="accordion.js"></script>
+    <link rel="stylesheet" type="text/css" href="accordion.css">
+    <title>Accordion Menu</title>
+  </head>
+  <body>
+    <nav class="accordion"></nav>
+  </body>
+  <script id="accordion-template" type="text/x-handlebars-template">
+    <ul class="main-menu">
+      {{#pages}}
+      <li class="main-menu-item" id="{{id}}"><span class="item-text">{{title}}</span>
+        {{#if childPages}}
+        <ul class="sub-menu">
+          {{#childPages}}
+            <li class="sub-menu-item" id="{{id}}"><span>{{title}}</span><li>
+              {{/childPages}}
+        </ul>
+        {{/if}}
+      {{/pages}}
+      </li>
+    </ul>
+  </script>
 </html>
